@@ -13,6 +13,8 @@ services:
     environment:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=password
+      - MINIO_ACCESS_KEY=admin
+      - MINIO_SECRET_KEY=password
     command: minio server /data --console-address ":9001"
     ports:
       - "9000:9000"
@@ -30,6 +32,8 @@ services:
       - MINIO_ACCESS_KEY=admin
       - MINIO_SECRET_KEY=password
       - DATA_PATH=/milvus-data
+      - LOG_LEVEL=debug
+    command: ["milvus", "run", "standalone"]
     depends_on:
       - etcd
       - minio
