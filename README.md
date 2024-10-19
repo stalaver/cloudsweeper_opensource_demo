@@ -8,4 +8,4 @@ For the embedding model, using a SentenceTransformer "all-MiniLM-L6-v2". For the
 Currently using Tesseract for the OCR, OpenCV for image processing, pdf2image to convert PDFs into images for processing, Docker to host Milvus Vector Database, and Milvus as the Vector Database.
 
 ### Current Issue:
-Milvus is currently exiting with exit code 1 immediately after starting. I've set up a Docker Compose file to start the etcd, minio, and milvus containers as needed. However, the Milvus container crashes immediately with exit code 1, and has no error logs.
+So far, results are good and the first item that is returned from the query has been correct. However, there are instances where multiple items afterwards are returned from the directory that would not be considered correct for the query.

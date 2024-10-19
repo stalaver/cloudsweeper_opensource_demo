@@ -29,10 +29,18 @@ def insert_embeddings(collection, embeddings, document_names):
     entities = [ids, embeddings, document_names]
     collection.insert(entities)
 
+def load_collection(collection):
+    '''
+    load collection into memory for search
+    '''
+    collection.load()
+
 def search_milv_collection(collection, query_embedding, top_k=5):
     '''
     Search Milvus for top k (eg. k=5) most similar docs
     '''
+    load_collection(collection)
+
     search_params = {'metric_type': "L2", "params": {"nprobe": 10}}
     results = collection.search(
         data=[query_embedding],
